@@ -1,0 +1,37 @@
+{
+  "data": [
+    {
+      "id": "asdasdlxasdlsd",
+      "kategori_artikel": "Makanan",
+      "deskripsi_artikel": "anjaymabar",
+      "isi_artikel": "",
+      "judul_artikel": "piraaakuuu",
+      "date": "",
+      "body": "<p>an<span style=\"background-color:hsl(60,75%,60%);\">jay mabar</span></p>"
+    },
+    {
+      "id": "ik1rp",
+      "kategori_artikel": "Makanan",
+      "deskripsi_artikel": "Sendal tebang anjay",
+      "isi_artikel": "<p>asd.,<span style=\"color:hsl(120, 75%, 60%);\">najklsdghjkhsdk </span><span style=\"background-color:hsl(0, 0%, 30%);\">askfjklhjkl </span>hsalkjdhfjkahsfdjk <strong>kjasdfhjksfdlkj</strong> kajsdhfkjhsadkj <s>fkjashfkjlsd</s></p>",
+      "judul_artikel": "sendal terbang",
+      "date": "2022-10-28 13:30:24"
+    },
+    {
+      "id": "bbblk",
+      "kategori_artikel": "Minuman",
+      "deskripsi_artikel": "Ini sendal modar anja eek",
+      "isi_artikel": "<figure class=\"image image_resized\" style=\"width:272px;\"><img src=\"http://localhost:8000/istockphoto-1333010525-612x612.jpg\"></figure><p>niadlhlas <span style=\"background-color:hsl(30, 75%, 60%);\">lajslkdjlkj </span><span style=\"color:hsl(0, 75%, 60%);\">aslkdjlkajsdlk</span> <i>alksjdlkjasdlk </i><u>lkasjdlkjasd </u><s>lkajsdlkjasd</s></p>",
+      "judul_artikel": "Sendal Modal",
+      "date": "2022-10-28 13:54:7"
+    },
+    {
+      "id_kategori": "",
+      "judul_artikel": "asdas",
+      "deskripsi_artikel": "asdas",
+      "isi_artikel": "<p>Content of the easdasdditor.</p>",
+      "catatan_editor": "",
+      "id": "NC2VWfJ"
+    }
+  ]
+}
