@@ -1,14 +1,17 @@
 <template>
+    
+    <button @click="logout"> Logout </button>
     <div class="formContainer">
         <div class="text-center m-4">
             <h1 class="text-light">Login</h1>
         </div>
-        <form class="text-center">
+
+        <form class="text-center" v-on:submit.prevent="PostItem">
             <div class="my-3">
-                <input type="text" class="form-control" name="emailid" placeholder="Username / Email">
+                <input v-model="form.username" type="text" class="form-control" name="emailid" placeholder="Username / Email">
             </div>
             <div class="my-3">
-                <input type="password" class="form-control" name="password" placeholder="Password">
+                <input v-model="form.password" type="password" class="form-control" name="password" placeholder="Password">
             </div>
             <a href="" class="text-start forget-pw">
                 <h5>
@@ -19,6 +22,51 @@
         </form>
     </div>
 </template>
+
+<script>
+import axios from "axios";
+export default {
+    data() {
+        return {
+            visibleTop: false,
+            form: {
+                username : "",
+                password : ""
+            },
+            signuppembaca: [],
+            updateSubmit: false,
+        }
+    },
+    methods: {
+        PostItem: function () {
+            try {
+                axios
+                    .post("http://localhost:4000/user/login", this.form, {withCredentials: true})
+                    .then((response) => {
+                        console.log(response)
+                        this.form.username = "";
+                        this.form.password = "";
+                        this.$router.push('/');
+
+                    })
+            } catch (error) {
+                console.log(error);
+            }
+        },
+        logout: function (){
+            try {
+                axios
+                    .get("http://localhost:4000/user/logout",{withCredentials: true})
+                    .then((response) => {
+                        console.log(response)
+                    })
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    },
+}
+</script>
 
 <style>
 .formContainer {

@@ -31,10 +31,14 @@
             <div class="Line1" />
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ante enim, sem consequat aliquam arcu</p>
             <div class="buttonsign">
-                <button class="ini-button">SignIn</button>
+                <router-link to="/login">
+                    <button class="ini-button">SignIn</button>
+                </router-link>
             </div>
             <div class="buttonsignup">
-                <button class="ini-button2">SignUp</button>
+                <router-link to="/register">
+                    <button class="ini-button2">SignUp</button>
+                </router-link>
             </div>
             <div class="Line2" />
         </div>

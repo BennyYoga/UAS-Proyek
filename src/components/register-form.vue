@@ -5,15 +5,18 @@
         </div>
         <form class="text-center" v-on:submit.prevent="PostItem">
             <div class="my-3">
-                <input v-model="form.nama_lengkap" type="text" class="form-control" name="nama" placeholder="Nama Lengkap">
+                <input v-model="form.nama_lengkap" type="text" class="form-control" name="nama"
+                    placeholder="Nama Lengkap">
             </div>
             <div class="my-3 text-light d-flex justify-content-start radio-group">
                 <label for="pria">
-                    <input v-model="form.jenis_kelamin" type="radio" class="radio-btn" id="pria" name="jenis-kelamin" value="l">
+                    <input v-model="form.jenis_kelamin" type="radio" class="radio-btn" id="pria" name="jenis-kelamin"
+                        value="l">
                     <h5>Pria</h5>
                 </label>
                 <label for="wanita">
-                    <input v-model="form.jenis_kelamin" type="radio" class="radio-btn" id="wanita" name="jenis-kelamin" value="p">
+                    <input v-model="form.jenis_kelamin" type="radio" class="radio-btn" id="wanita" name="jenis-kelamin"
+                        value="p">
                     <h5>Wanita</h5>
                 </label>
             </div>
@@ -24,9 +27,12 @@
                 <input v-model="form.email" type="email" class="form-control" name="email" placeholder="Email">
             </div>
             <div class="my-3">
-                <input v-model="form.password" type="password" class="form-control" name="password" placeholder="Password">
+                <input v-model="form.password" type="password" class="form-control" name="password"
+                    placeholder="Password">
             </div>
-            <button class="d-block btn-glass w-25 mt-5" type="submit">Sign Up</button>
+            <button class="d-block btn-glass w-25 mt-5" type="submit">
+                Sign Up
+            </button>
         </form>
     </div>
 </template>
@@ -119,39 +125,40 @@ form {
 <script>
 import axios from "axios";
 export default {
-  data() {
-    return {
-      visibleTop: false,
-      form: {
-        username: "",
-        nama_lengkap: "",
-        password: "",
-        email: "",
-        jenis_kelamin: "",
-      },
-      signuppembaca: [],
-      updateSubmit: false,
-    }
-  },
-  methods:{
-    PostItem : function() {
-      alert("Data telah tersimpan")
-      try {
-        axios
-        .post("http://localhost:3000/user/auth/pembaca/register", this.form)
-        .then((response) => {
-          this.form = [...this.form,response.persyaratan]
-          this.form.username = "";
-          this.form.nama_lengkap = "";
-          this.form.password = "";
-          this.form.email = "";
-          this.form.jenis_kelamin = "";
-        })  
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  },
+    data() {
+        return {
+            visibleTop: false,
+            form: {
+                username: "",
+                nama_lengkap: "",
+                password: "",
+                email: "",
+                jenis_kelamin: "",
+            },
+            signuppembaca: [],
+            updateSubmit: false,
+        }
+    },
+    methods: {
+        PostItem: function () {
+            try {
+                axios
+                    .post("http://localhost:4000/user/pembaca/register", this.form)
+                    .then((response) => {
+                        alert("Data telah tersimpan")
+                        this.form = [...this.form, response.persyaratan]
+                        this.form.username = "";
+                        this.form.nama_lengkap = "";
+                        this.form.password = "";
+                        this.form.email = "";
+                        this.form.jenis_kelamin = "";
+                        this.$router.push('/login');
+                    })
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    },
 }
 
 </script>

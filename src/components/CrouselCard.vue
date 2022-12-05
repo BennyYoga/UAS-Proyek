@@ -283,7 +283,6 @@ export default {
                     // console.log("judul", this.data[0].judul_artikel);
                 })
                 .catch(() => {
-                    alert("gak nampil");
                 });
         },
     },

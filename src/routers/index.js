@@ -7,6 +7,8 @@ import ProfileKontributor from "@/page/ArticlePage.vue"
 import PreviewArtikel from "@/page/PreviewPage.vue"
 import LandingPage from "@/page/LandingPage.vue"
 import EditProfilePage from "@/page/EditProfilePage.vue"
+import Login from "@/page/login-page.vue"
+import Register from "@/page/register-page.vue"
 // import login from "@/page/login.vue"
 
 
@@ -93,6 +95,19 @@ const routes = [
         name: 'PreviewArtikel',
         path: '/Studio/Artikel/Preview',
         component: PreviewArtikel,
+    },
+
+
+
+    {
+        name: 'Login',
+        path: '/Login',
+        component: Login,
+    },
+    {
+        name: 'Register',
+        path: '/Register',
+        component: Register,
     },
 ];
 

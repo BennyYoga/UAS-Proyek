@@ -1,6 +1,6 @@
 <template>
 
-    <div class="card">
+    <div class="card" v-for="form in form" :key="form.id">
         <div class="card-body d-flex ">
             <img class="preview-pict" src="../assets/image.svg" alt="">
             <div class="flex-item">
@@ -8,27 +8,20 @@
                     <span>
                         <img src="../assets/creator.png" alt="">
                     </span>
-                    Creator Name
+                    {{ form.id_user }}
                     <span style="float : right">
                         <img src="../assets/save.svg" alt="">
                         <img src="../assets/delete.svg" alt="">
                     </span>
                 </h6>
-                <h4 class="card-subtitle mb-2">Article Title</h4>
-                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
-                    veroquos, saepe atque quae nostrum numquam sequi quis minus laboriosam, repellat, ipsum
-                    voluptatem laudantium perspiciatis facilis. Lorem ipsum dolor sit amet consectetur adipisicing
-                    elit.
-                    Esse, nesciunt vitae nemo doloremque reprehenderit eaque quos numquam iste et quam dolores
-                    totam,
-                    modi doloribus assumenda delectus velit facilis vel accusamus.
-                </p>
+                <h4 class="card-subtitle mb-2">{{ form.judul_artikel }}</h4>
+                <p class="card-text">{{ form.deskripsi_artikel }}</p>
                 <p href="#" class="card-info">
                     <span class="publish-date">
-                        Okt 2016
+                        {{ form.waktu_draft }}
                     </span>
                     <span class="category">
-                        Category
+                        {{ form.id_kategori }}
                     </span>
                     <span class="icons">
                         <span>
@@ -46,6 +39,43 @@
 
 </template>
 
+<script>
+import axios from "axios";
+export default {
+    name: "PublishedCard",
+    data() {
+        return {
+            form: {
+                id_user: "",
+                judul_artikel: "",
+                deskripsi_artikel: "",
+                waktu_draft: "",
+                cover_artikel: "",
+                id_kategori: "",
+            },
+            showDialog: false
+        };
+    },
+
+    methods: {
+        getItem() {
+            axios
+                .get("http://localhost:5000/artikel/publish/limit/3")
+                .then((response) => {
+                    this.form = response.data.data;
+                    console.log("datanya" + this.form);
+                })
+                .catch((error) => {
+                    console.log("Error get Datanya", error);
+                });
+        },
+    },
+    mounted() {
+        this.getItem();
+    },
+};
+</script>
+
 <style scoped>
 a {
     color: black;
@@ -57,7 +87,7 @@ a {
     border-radius: 0;
     border: 0 0 1px 1px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px 0px, rgba(0, 0, 0, 0.23) 0px 3px 6px 0px;
-    margin: 0px 10px 0px 0px;
+    margin: 0px 10px 40px 0px;
     background: rgba(255, 255, 255, 1);
     transition: 400ms;
     width: 950px;

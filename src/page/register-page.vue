@@ -14,11 +14,11 @@
 </template>
 
 <style scoped>
-@import url('../assets/styles/base-style.css')
+@import url('../assets/styles/base-style.css');
 </style>
 
 <script>
-import registerForm from './register-form.vue';
+import registerForm from '@/components/register-form.vue';
 
 export default {
     components: {

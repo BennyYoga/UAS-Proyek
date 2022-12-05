@@ -4,7 +4,9 @@
     <div id="mainContent">
         <div class="d-flex justify-content-between w-100">
             <div class="logo">
-                <img src="../assets/LOGO.svg" alt="">
+                <router-link to="/">
+                    <img src="../assets/LOGO.svg" alt="">
+                </router-link>
             </div>
             <button class="signup-btn">Sign-In</button>
         </div>
@@ -14,11 +16,11 @@
 </template>
 
 <style scoped>
-@import url('../assets/styles/base-style.css')
+@import url('../assets/styles/base-style.css');
 </style>
 
 <script>
-import loginForm from './login-form.vue';
+import loginForm from '@/components/login-form.vue';
 
 export default {
     components: {
