@@ -70,7 +70,7 @@ export default {
 
     mounted() {
         axios
-            .get("http://localhost:5000/artikel/draft?page=0")
+            .get("http://localhost:4000/artikel/draft?page=0")
             .then((response) => {
                 this.form = response.data.data;
                 console.log("datanya" + this.form);

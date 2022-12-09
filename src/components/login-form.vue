@@ -25,6 +25,13 @@
 
 <script>
 import axios from "axios";
+// import { useCookies } from "vue3-cookies"
+// Require dependencies
+// var Vue = require('vue');
+// var VueCookie = require('vue-cookie');
+// // Tell Vue to use the plugin
+// Vue.use(VueCookie);
+
 export default {
     data() {
         return {
@@ -37,6 +44,10 @@ export default {
             updateSubmit: false,
         }
     },
+    // setup() {
+    // const { cookies } = useCookies();
+    // return { cookies };
+//   },
     methods: {
         PostItem: function () {
             try {
@@ -44,6 +55,9 @@ export default {
                     .post("http://localhost:4000/user/login", this.form, {withCredentials: true})
                     .then((response) => {
                         console.log(response)
+                        console.log(response.data.token)
+                        localStorage.setItem('token-front', response.data.token)
+                        // this.$cookie.set('token-front', response.token, 1);
                         this.form.username = "";
                         this.form.password = "";
                         this.$router.push('/');

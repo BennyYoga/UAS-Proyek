@@ -9,6 +9,8 @@ import LandingPage from "@/page/LandingPage.vue"
 import EditProfilePage from "@/page/EditProfilePage.vue"
 import Login from "@/page/login-page.vue"
 import Register from "@/page/register-page.vue"
+import BerandaEditor from "@/page/BerandaEditor.vue"
+import ListEditorPage from "@/page/ListEditorPage.vue"
 // import login from "@/page/login.vue"
 
 
@@ -69,7 +71,7 @@ const routes = [
     },
     {
         name: 'ProfileKontributor',
-        path: '/User',
+        path: '/Profile',
         component: ProfileKontributor,
     },
     {
@@ -108,6 +110,22 @@ const routes = [
         name: 'Register',
         path: '/Register',
         component: Register,
+    },
+
+
+    // admin-ediitor
+    {
+        name: 'BerandaEditor',
+        path: '/admin/dashboard',
+        component: BerandaEditor,
+    },
+
+
+    //admin
+    {
+        name: 'ListEditorPage',
+        path: '/admin/editor',
+        component: ListEditorPage,
     },
 ];
 

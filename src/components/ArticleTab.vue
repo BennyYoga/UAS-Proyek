@@ -15,20 +15,22 @@
             </div>
         </nav>
         <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="nav-published" role="tabpanel"
-                aria-labelledby="nav-published-tab" tabindex="0">
-                <PublishedCard />
-
-            </div>
-            <div class="tab-pane fade" id="nav-draft" role="tabpanel" aria-labelledby="nav-draft-tab" tabindex="0">
-                <DraftCard />
-
-            </div>
-            <div class="tab-pane fade" id="nav-archived" role="tabpanel" aria-labelledby="nav-archived-tab"
-                tabindex="0">
-                <ArchivedCard></ArchivedCard>
-
-            </div>
+            <div v-if="this.user.role== 'Kontributor'">
+                <div class="tab-pane fade show active" id="nav-published" role="tabpanel"
+                    aria-labelledby="nav-published-tab" tabindex="0">
+                    <PublishedCard />
+    
+                </div>
+                <div class="tab-pane fade" id="nav-draft" role="tabpanel" aria-labelledby="nav-draft-tab" tabindex="0">
+                    <DraftCard />
+    
+                </div>
+                <div class="tab-pane fade" id="nav-archived" role="tabpanel" aria-labelledby="nav-archived-tab"
+                    tabindex="0">
+                    <ArchivedCard></ArchivedCard>
+    
+                </div>
+            </div>            
             <div class="tab-pane fade" id="nav-saved" role="tabpanel" aria-labelledby="nav-saved-tab" tabindex="0">
                 <SavedCard></SavedCard>
 
@@ -42,14 +44,41 @@ import PublishedCard from './PublishedCard.vue'
 import DraftCard from './DraftCard.vue'
 import ArchivedCard from './ArchivedCard.vue'
 import SavedCard from './SavedCard.vue'
+import axios from 'axios'
+// import { useCookies } from "vue3-cookies"
+
 
 export default {
+
     name: 'App',
     components: {
         PublishedCard,
         DraftCard,
         ArchivedCard,
         SavedCard
+    },
+    data() {
+        return {
+            user: ""
+        }
+    },
+    // setup() {
+    //     const { cookies } = useCookies();
+    //     return { cookies };
+    // },
+    mounted() {
+        // alert(this.$cookies.get('token'));
+        try {
+            axios
+                .get("http://localhost:4000/user/payload/"+ localStorage.getItem('token-front'))
+                .then((response) => {
+                    console.log(response.data)
+                    this.user = response.data;
+                })
+        } catch (error) {
+            console.log(error);
+        }
+        // alert(this.user.id_user)
     }
 }
 </script>
