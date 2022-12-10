@@ -1,5 +1,5 @@
 
-import { createRouter,createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 
 // import CreateArticle from "@/components/CreateArticle.vue"
 import EditArtikel from "@/page/EditArticle.vue"
@@ -12,7 +12,8 @@ import Register from "@/page/register-page.vue"
 import BerandaEditor from "@/page/BerandaEditor.vue"
 import ListEditorPage from "@/page/ListEditorPage.vue"
 // import login from "@/page/login.vue"
-
+import axios from 'axios'
+import NotFoundPage from "@/page/PageNotFound.vue"
 
 const routes = [
     // {
@@ -61,7 +62,7 @@ const routes = [
         path: '/Artikel/:id',
         // component: IsiArtikel,
         props: true
-        
+
     },
     {
         name: 'ArtikelKontributor',
@@ -73,6 +74,14 @@ const routes = [
         name: 'ProfileKontributor',
         path: '/Profile',
         component: ProfileKontributor,
+        beforeEnter: (to, from, next) => {
+            if (localStorage.getItem('token-front') == null) {
+                return next({
+                    name: 'Login'
+                })
+            }
+            next()
+        }
     },
     {
         name: 'EditProfilePage',
@@ -118,6 +127,27 @@ const routes = [
         name: 'BerandaEditor',
         path: '/admin/dashboard',
         component: BerandaEditor,
+        beforeEnter: (to, from, next) => {
+            if (localStorage.getItem('token-front') == null) {
+                return next({
+                    name: 'Login'
+                })
+            }
+            else {
+                let data = "";
+                axios
+                    .get("http://localhost:4000/user/payload/" + localStorage.getItem('token-front'))
+                    .then((response) => {
+                        data = response.data.role;
+                    })
+                if (data != 'Admin') {
+                    return next({
+                        name: 'NotFoundPage'
+                    })
+                }
+            }
+            next()
+        }
     },
 
 
@@ -127,11 +157,19 @@ const routes = [
         path: '/admin/editor',
         component: ListEditorPage,
     },
+
+
+    //404 Page
+    {
+        name: 'NotFoundPage',
+        path: '/NotFoundPage',
+        component: NotFoundPage,
+    },
 ];
 
 const router = createRouter({
     history: createWebHistory(),
     routes,
-  });
+});
 
 export default router

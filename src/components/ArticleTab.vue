@@ -15,7 +15,7 @@
             </div>
         </nav>
         <div class="tab-content" id="nav-tabContent">
-            <div v-if="this.user.role== 'Kontributor'">
+            <!-- <div v-if="this.user.role== 'Kontributor'"> -->
                 <div class="tab-pane fade show active" id="nav-published" role="tabpanel"
                     aria-labelledby="nav-published-tab" tabindex="0">
                     <PublishedCard />
@@ -36,7 +36,7 @@
 
             </div>
         </div>
-    </div>
+    <!-- </div> -->
 </template>
 
 <script>
@@ -72,7 +72,7 @@ export default {
             axios
                 .get("http://localhost:4000/user/payload/"+ localStorage.getItem('token-front'))
                 .then((response) => {
-                    console.log(response.data)
+                    console.log(response.data.role)
                     this.user = response.data;
                 })
         } catch (error) {

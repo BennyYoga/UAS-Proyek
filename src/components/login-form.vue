@@ -1,5 +1,5 @@
 <template>
-    
+
     <button @click="logout"> Logout </button>
     <div class="formContainer">
         <div class="text-center m-4">
@@ -8,10 +8,12 @@
 
         <form class="text-center" v-on:submit.prevent="PostItem">
             <div class="my-3">
-                <input v-model="form.username" type="text" class="form-control" name="emailid" placeholder="Username / Email">
+                <input v-model="form.username" type="text" class="form-control" name="emailid"
+                    placeholder="Username / Email">
             </div>
             <div class="my-3">
-                <input v-model="form.password" type="password" class="form-control" name="password" placeholder="Password">
+                <input v-model="form.password" type="password" class="form-control" name="password"
+                    placeholder="Password">
             </div>
             <a href="" class="text-start forget-pw">
                 <h5>
@@ -37,8 +39,8 @@ export default {
         return {
             visibleTop: false,
             form: {
-                username : "",
-                password : ""
+                username: "",
+                password: ""
             },
             signuppembaca: [],
             updateSubmit: false,
@@ -47,33 +49,33 @@ export default {
     // setup() {
     // const { cookies } = useCookies();
     // return { cookies };
-//   },
+    //   },
     methods: {
         PostItem: function () {
             try {
                 axios
-                    .post("http://localhost:4000/user/login", this.form, {withCredentials: true})
+                    .post("http://localhost:4000/user/login", this.form, { withCredentials: true })
                     .then((response) => {
                         console.log(response)
                         console.log(response.data.token)
                         localStorage.setItem('token-front', response.data.token)
-                        // this.$cookie.set('token-front', response.token, 1);
                         this.form.username = "";
                         this.form.password = "";
-                        this.$router.push('/');
-
                     })
             } catch (error) {
                 console.log(error);
             }
+            this.$router.push('/');
         },
-        logout: function (){
+        logout: function () {
             try {
                 axios
-                    .get("http://localhost:4000/user/logout",{withCredentials: true})
+                    .get("http://localhost:4000/user/logout", { withCredentials: true })
                     .then((response) => {
                         console.log(response)
                     })
+                localStorage.removeItem('token-front');
+                // localStorage.removeItem('user');
             } catch (error) {
                 console.log(error);
             }
