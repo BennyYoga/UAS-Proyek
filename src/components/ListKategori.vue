@@ -15,11 +15,15 @@
         </li>
       </ul>
     </button> -->
+  <link
+    rel="stylesheet"
+    href="http://localhost:8080/assets/css/style.min.css"
+  />
   <div class="row">
     <div class="col-sm-12">
-      <div style="float: right;">
+      <div style="float: right">
         <label class="search-label">
-          <input class="search-bar" type="text" placeholder="Search..">
+          <input class="search-bar" type="text" placeholder="Search.." />
         </label>
         <h5 class="label-kategori">Total User : {{ resultCount }}</h5>
       </div>
@@ -86,17 +90,25 @@
   </div>
   <div id="popup" class="popupnya">
     <div class="card">
-      <h3 class="card-header ">Delete Kategory</h3>
+      <h3 class="card-header">Delete Kategory</h3>
       <div class="card-body">
         <p class="card-text">Anda yakin ingin menghapus kategori ini?</p>
       </div>
-      <div class="card-footer ">
+      <div class="card-footer">
         <div class="posisi-btn">
           <div class="btn-outline-dark m-2">
-            <button id="blur" class="container button" v-on:click="toggle()">Tidak</button>
+            <button id="blur" class="container button" v-on:click="toggle()">
+              Tidak
+            </button>
           </div>
           <div class="btn-outline-dark m-2">
-            <button id="blur" class="container button-hapus" v-on:click="toggle()">Ya,hapus akun</button>
+            <button
+              id="blur"
+              class="container button-hapus"
+              v-on:click="toggle()"
+            >
+              Ya,hapus akun
+            </button>
           </div>
         </div>
       </div>
@@ -104,155 +116,156 @@
   </div>
 </template>
 <script>
-  export default {
-    name: "App",
-    methods: {
-      toggle() {
-        var blur = document.getElementById("blur");
-        blur.classList.toggle("active");
-        var popup = document.getElementById("popup");
-        popup.classList.toggle("active");
-      },
+export default {
+  name: "App",
+  methods: {
+    toggle() {
+      var blur = document.getElementById("blur");
+      blur.classList.toggle("active");
+      var popup = document.getElementById("popup");
+      popup.classList.toggle("active");
     },
-  }
+  },
+};
 </script>
 
 <style scoped>
-  .container {
-    background-color: transparent;
-  }
+.container {
+  background-color: transparent;
+}
 
-  .container#blur.active {
-    filter: blur(20px);
-    pointer-events: none;
-    user-select: none;
-  }
+.container#blur.active {
+  filter: blur(20px);
+  pointer-events: none;
+  user-select: none;
+}
 
-  #popup {
-    position: fixed;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    visibility: hidden;
-    opacity: 0;
-    transition: 0.5s;
-  }
+#popup {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.5s;
+}
 
-  #popup.active {
-    top: 50%;
-    visibility: visible;
-    opacity: 1;
-    transition: 0.5s;
-  }
+#popup.active {
+  top: 50%;
+  visibility: visible;
+  opacity: 1;
+  transition: 0.5s;
+}
 
-  .header {
-    background: #309C9F;
-    border: 1px solid #309C9F;
-  }
+.header {
+  background: #309c9f;
+  border: 1px solid #309c9f;
+}
 
-  .seacrh-bar-content {
-    width: 100%;
-  }
+.seacrh-bar-content {
+  width: 100%;
+}
 
-  .search-bar {
-    width: 300px;
-    text-align: right;
-  }
+.search-bar {
+  width: 300px;
+  text-align: right;
+}
 
-  .card {
-    width: 570px;
-    height: 265px;
-    background: #FFFFFF;
-    border-radius: 30px;
-    color: #FFFFFF;
-  }
+.card {
+  width: 570px;
+  height: 265px;
+  background: #ffffff;
+  border-radius: 30px;
+  color: #ffffff;
+}
 
-  .search-label {
-    position: relative;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 24px;
-    color: #727272;
-  }
+.search-label {
+  position: relative;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: #727272;
+}
 
-  .search-label:before {
-    content: "";
-    position: absolute;
-    left: 85%;
-    top: 0;
-    bottom: 0;
-    width: 20px;
-    background: url('../assets/search.svg') center / contain no-repeat;
-  }
+.search-label:before {
+  content: "";
+  position: absolute;
+  left: 85%;
+  top: 0;
+  bottom: 0;
+  width: 20px;
+  background: url("../assets/search.svg") center / contain no-repeat;
+}
 
-  .search-bar {
-    width: 13rem;
-    height: 2rem;
-    background: #ECECEC;
-    border: none;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-    border-radius: 8px;
-    margin: 2.5rem 0;
-    padding: 10px 30px;
-  }
+.search-bar {
+  width: 13rem;
+  height: 2rem;
+  background: #ececec;
+  border: none;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  border-radius: 8px;
+  margin: 2.5rem 0;
+  padding: 10px 30px;
+}
 
-  .btn.btn-outline-dark {
-    width: 100px;
-  }
+.btn.btn-outline-dark {
+  width: 100px;
+}
 
-  .button {
-    border-radius: 5px;
-    color: #ECECEC;
-    border: none;
-    margin: 5px;
-    width: 98px;
-    height: 37px;
-    left: 1045px;
-    top: 369px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 24px;
-    color: black;
-  }
+.button {
+  border-radius: 5px;
+  color: #ececec;
+  border: none;
+  margin: 5px;
+  width: 98px;
+  height: 37px;
+  left: 1045px;
+  top: 369px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: black;
+}
 
-  .button-hapus {
-    border-radius: 5px;
-    background-color: #309C9F;
-    border: none;
-    margin: 5px;
-    width: 173px;
-    height: 37px;
-    left: 1045px;
-    top: 369px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 24px;
-    color: #FFFFFF;
-  }
+.button-hapus {
+  border-radius: 5px;
+  background-color: #309c9f;
+  border: none;
+  margin: 5px;
+  width: 173px;
+  height: 37px;
+  left: 1045px;
+  top: 369px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: #ffffff;
+}
 
-  .posisi {
-    display: flex;
-    justify-content: flex-end;
-  }
+.posisi {
+  display: flex;
+  justify-content: flex-end;
+}
 
-  .posisi-btn {
-    display: flex;
-    margin-left: 200px;
-  }
+.posisi-btn {
+  display: flex;
+  margin-left: 200px;
+}
 
-  p {
-    color: black;
-  }
+p {
+  color: black;
+}
 
-  .card h3 {
-    color: black;
-  }
+.card h3 {
+  color: black;
+}
 </style>

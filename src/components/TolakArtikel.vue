@@ -7,36 +7,31 @@
     <div class="container">
       <div class="ket">
         <form>
-          <div class="box-ket mt-5">Nama</div>
-          <input
-            class="input mt-3"
-            type="text"
-            placeholder="Enter your name..."
-          />
-        </form>
-        <div class="ket2">
-          <div class="box-ket mt-5">Deskripsi</div>
+          <div class="box-ket mt-5">Catatan :</div>
           <textarea
-            class="input2"
+            class="input2 mt-3"
+            type="text"
             id="w3review"
             name="w3review"
             rows="15"
             cols="50"
           >
           </textarea>
-        </div>
+        </form>
       </div>
     </div>
     <div class="posisi-btn">
       <div class="btn-outline-dark m-2">
-        <button id="blur" class="button" v-on:click="toggle()">Submit</button>
+        <button id="blur" class="button" v-on:click="toggle()">
+          Dikembalikan
+        </button>
       </div>
     </div>
     <div id="popup" class="popupnya">
       <div class="card">
         <h3 class="card-header">Success!</h3>
         <div class="card-body">
-          <p class="card-text">Buat kategori berhasil.</p>
+          <p class="card-text">Artikel telah dikembalikan.</p>
         </div>
         <div class="card-footer">
           <div class="posisi-btn-modal">
@@ -55,8 +50,8 @@
     </div>
   </div>
 </template>
-
-<script>
+  
+  <script>
 export default {
   name: "App",
   methods: {
@@ -69,8 +64,8 @@ export default {
   },
 };
 </script>
-
-<style scoped>
+  
+  <style scoped>
 .article-page {
   background-color: #309c9f;
   height: 200vh;
@@ -113,8 +108,8 @@ export default {
 .input2 {
   box-sizing: border-box;
   position: absolute;
-  width: 815px;
-  height: 408px;
+  width: 854px;
+  height: 468px;
   background: #ffffff;
   border: 1px solid #309c9f;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -137,10 +132,10 @@ export default {
   background-color: #309c9f;
   border: none;
   margin: 5px;
-  width: 106px;
+  width: 123px;
   height: 48px;
-  left: 975px;
-  top: 575px;
+  left: 995px;
+  top: 550px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
   font-family: "Inter";
   font-style: normal;

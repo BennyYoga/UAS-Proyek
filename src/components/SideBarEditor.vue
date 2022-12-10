@@ -4,10 +4,10 @@
             <div class="sidebar-start">
                 <div class="sidebar-head">
                     <a href="/" class="logo-wrapper" title="Home">
-                        <!-- <img src="assets/img/avatar/logo.png" class="imglogo" aria-hidden="true"/> -->
+                        <img src="assets/img/avatar/logo.png" class="imglogo" aria-hidden="true"/>
                     </a>
                     <div class="Logo-text">
-                        <span class="Title-Geowisata" aria-hidden="true">GEOWISATA</span>
+                        <span class="logo-title" aria-hidden="true">GEOWISATA</span>
                     </div> 
                     <button class="sidebar-toggle transparent-btn" title="Menu" type="button">
                         <span class="sr-only">Toggle menu</span>
@@ -56,27 +56,5 @@ export default {
 </script>
 
 <style>
-    .sidebar-body-menu a {
-    position: relative;
-    padding: 8px 0;
-    opacity: 0.6;
-    color: #fff;
-    font-weight: 500;
-    font-size: 14px;
-    }
-
-    .sidebar{
-        width: 200px;
-    }
-
-    ul li {
-    display: inline-block;
-    margin: 0.5rem;
-}
-
-.Title-Geowisata{
-    font-weight: bolder;
-    font-size: large;
-    color: white;
-}
+    
 </style>

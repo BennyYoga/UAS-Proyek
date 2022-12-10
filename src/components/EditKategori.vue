@@ -6,19 +6,19 @@
   <div class="col col-xl">
     <div class="container">
       <div class="ket">
-        <form>
-          <div class="box-ket mt-5">Nama</div>
-          <input
-            class="input mt-3"
-            type="text"
-            placeholder="Enter your name..."
-          />
-        </form>
+        <div for="nama" class="box-ket mt-5">Nama</div>
+        <input
+          class="input mt-3"
+          type="text"
+          v-model="this.form.nama_kategori"
+          id="nama_kategori"
+        />
         <div class="ket2">
-          <div class="box-ket mt-5">Deskripsi</div>
+          <div for="deskripsi-text" class="box-ket mt-5">Deskripsi</div>
           <textarea
             class="input2"
-            id="w3review"
+            id="deskripsi-text"
+            v-model="this.form.deskripsi_kategori"
             name="w3review"
             rows="15"
             cols="50"
@@ -34,19 +34,28 @@
     </div>
     <div id="popup" class="popupnya">
       <div class="card">
-        <h3 class="card-header">Success!</h3>
+        <h3 class="card-header">Edit Kategori</h3>
         <div class="card-body">
-          <p class="card-text">Buat kategori berhasil.</p>
+          <p class="card-text">Simpan perubahan?</p>
         </div>
         <div class="card-footer">
           <div class="posisi-btn-modal">
             <div class="btn-outline-dark m-2">
               <button
                 id="blur"
-                class="container button-hapus"
+                class="container button-tidak"
                 v-on:click="toggle()"
               >
-                Tutup
+                Tidak
+              </button>
+            </div>
+            <div class="btn-outline-dark m-2">
+              <button
+                id="blur"
+                class="container button-hapus"
+                v-on:click="toggle(), Update(form)"
+              >
+                Ya,simpan
               </button>
             </div>
           </div>
@@ -57,9 +66,45 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
-  name: "App",
+  name: "FormControl",
+  data() {
+    return {
+      form: {
+        id_kategori: "",
+        nama_kategori: "",
+        deskripsi_kategori: "",
+      },
+      kategoris: [],
+    };
+  },
   methods: {
+    Edit(kategori) {
+      this.updateSubmit = true;
+      this.form.id_kategori = kategori.id_kategori;
+      this.form.nama_kategori = kategori.nama_kategori;
+      this.form.deskripsi_kategori = kategori.deskripsi_kategori;
+    },
+    Update(form) {
+      axios
+        .patch(`http://localhost:3011/kategori/${form.id}`, {
+          nama: this.form.nama_kategori,
+          deskripsi_kategori: this.form.deskripsi_kategori,
+        })
+        .then(() => {
+          this.getItem();
+          this.form.id_kategori = "";
+          this.form.nama_kategori = "";
+          this.form.deskripsi_kategori = "";
+          alert("Data terupdate...");
+        })
+        .catch((err) => {
+          console.log(err);
+          console.warn();
+          alert("!Error update data");
+        });
+    },
     toggle() {
       var blur = document.getElementById("blur");
       blur.classList.toggle("active");
@@ -102,8 +147,8 @@ export default {
 .input {
   box-sizing: border-box;
   position: absolute;
-  width: 815px;
-  height: 48px;
+  width: 615px;
+  height: 38px;
   background: #ffffff;
   border: 1px solid #309c9f;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -113,8 +158,8 @@ export default {
 .input2 {
   box-sizing: border-box;
   position: absolute;
-  width: 815px;
-  height: 408px;
+  width: 615px;
+  height: 308px;
   background: #ffffff;
   border: 1px solid #309c9f;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -136,9 +181,26 @@ export default {
   border-radius: 5px;
   background-color: #309c9f;
   border: none;
-  margin: 5px;
+  margin: 0px;
   width: 106px;
   height: 48px;
+  left: 758px;
+  top: 560px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: #ffffff;
+}
+
+.button-tidak {
+  border-radius: 5px;
+  border: none;
+  margin: 5px;
+  width: 98px;
+  height: 37px;
   left: 975px;
   top: 575px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
@@ -152,10 +214,9 @@ export default {
 
 .button-hapus {
   border-radius: 5px;
-  background-color: #309c9f;
   border: none;
   margin: 5px;
-  width: 88px;
+  width: 126px;
   height: 37px;
   left: 1045px;
   top: 369px;
@@ -176,7 +237,7 @@ export default {
 
 .posisi-btn-modal {
   display: flex;
-  margin-left: 400px;
+  margin-left: 270px;
 }
 
 .container {
@@ -185,6 +246,10 @@ export default {
 
 .container.button-hapus {
   background-color: #309c9f;
+}
+
+.container.button-tidak {
+  background-color: #858585;
 }
 
 .container#blur.active {
