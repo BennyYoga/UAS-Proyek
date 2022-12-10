@@ -1,20 +1,4 @@
 <template>
-  <!-- <button type="button" class="container">
-    <a class="show-cat-btn" href="##">
-      All
-    </a>
-    <ul class="cat-sub-menu">
-      <li>
-        <a href="#">List Pengguna</a>
-      </li>
-      <li>
-        <a href="#">List Editor</a>
-      </li>
-      <li>
-        <a href="#">Buat Akun Editor</a>
-      </li>
-    </ul>
-  </button> -->
   <link
     rel="stylesheet"
     href="http://localhost:8080/assets/css/style.min.css"
@@ -24,15 +8,15 @@
       <div class="dropdown1">
         <select name="dog-names" id="dog-names" class="drop">
           <option class="down" value="rigatoni">All</option>
-          <option class="down" value="dave">Active</option>
-          <option class="down" value="pumpernickel">Blacklist</option>
+          <option class="down" value="dave">Event</option>
+          <option class="down" value="pumpernickel">Artikel Biasa</option>
         </select>
       </div>
       <div style="float: right">
         <label class="search-label">
           <input class="search-bar" type="text" placeholder="Search.." />
         </label>
-        <h5 class="label-kategori">Total User : {{ resultCount }}</h5>
+        <h5 class="label-kategori">Total Artikel : {{ resultCount }}</h5>
       </div>
     </div>
   </div>
@@ -41,107 +25,36 @@
       <thead class="header">
         <tr>
           <th scope="col">Username</th>
-          <th scope="col">Email</th>
-          <th scope="col">Role</th>
-          <th scope="col">Status</th>
+          <th scope="col">Judul</th>
+          <th scope="col">Tanggal Publish</th>
+          <th scope="col">Jenis Artikel</th>
           <th></th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td>User1</td>
-          <td>user1@gmail.com</td>
-          <td>Pembaca</td>
-          <td><button type="button" class="btn btn-success">Active</button></td>
-          <td class="posisi">
-            <div class="btn-outline-dark m-2">
-              <button class="button" v-on:click="toggle()">Delete</button>
-            </div>
-            <div class="btn-outline-dark m-2">
-              <button class="button" v-on:click="toggle()">Details</button>
-            </div>
-            <!-- <button type="button" class="container btn btn-outline-dark" v-on:click="toggle1()">Detail</button> -->
-          </td>
+          <td>lorem ipsum</td>
+          <td>dd/mm/yy</td>
+          <td>event</td>
         </tr>
         <tr>
           <td>User2</td>
-          <td>user2@gmail.com</td>
-          <td>Kontributor</td>
-          <td>
-            <button type="button" class="btn btn-danger">Blacklist</button>
-          </td>
-          <td class="posisi">
-            <div class="btn-outline-dark m-2">
-              <button class="button" v-on:click="toggle()">Delete</button>
-            </div>
-            <div class="btn-outline-dark m-2">
-              <button class="button" v-on:click="toggle()">Details</button>
-            </div>
-          </td>
+          <td>lorem ipsum</td>
+          <td>dd/mm/yy</td>
+          <td>event</td>
         </tr>
       </tbody>
     </table>
   </div>
-  <div id="popup" class="popupnya">
-    <div class="card">
-      <h3 class="card-header">Delete User</h3>
-      <div class="card-body">
-        <p class="card-text">Anda yakin ingin menghapus akun ini?</p>
-      </div>
-      <div class="card-footer">
-        <div class="posisi-btn">
-          <div class="btn-outline-dark m-2">
-            <button id="blur" class="container button" v-on:click="toggle()">
-              Tidak
-            </button>
-          </div>
-          <div class="btn-outline-dark m-2">
-            <button
-              id="blur"
-              class="container button-hapus"
-              v-on:click="toggle()"
-            >
-              Ya,hapus akun
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- <div class="col col-xl">
-    <div class="container">
-      <div class="ket">
-        <form>
-          <div class="box-ket mt-5">
-            Nama
-          </div>
-          <input class="input mt-3" type='text' placeholder='Enter your name...' />
-        </form>
-        <div class="ket2">
-          <div class="box-ket mt-5">
-            Deskripsi
-          </div>
-          <textarea class="input2" id="w3review" name="w3review" rows="15" cols="50"> </textarea>
-        </div>
-      </div>
-    </div>
-  </div> -->
-  </div>
 </template>
-<script>
+  <script>
 export default {
   name: "App",
-  methods: {
-    toggle() {
-      var blur = document.getElementById("blur");
-      blur.classList.toggle("active");
-      var popup = document.getElementById("popup");
-      popup.classList.toggle("active");
-    },
-  },
 };
 </script>
-
-<style scoped>
+  
+  <style scoped>
 .container {
   background-color: transparent;
 }
@@ -318,3 +231,4 @@ p {
   background-color: #ffffff;
 }
 </style>
+  

@@ -11,9 +11,21 @@ import Login from "@/page/login-page.vue"
 import Register from "@/page/register-page.vue"
 import BerandaEditor from "@/page/BerandaEditor.vue"
 import ListEditorPage from "@/page/ListEditorPage.vue"
+import AkunPenggunaPage from "@/page/AkunPenggunaPage.vue"
+import BuatAkunEditorPage from "@/page/BuatAkunEditorPage.vue"
+import ListKategoriPage from "@/page/ListKategoriPage.vue"
+import BuatKategoriPage from "@/page/BuatKategoriPage.vue"
+import EditKategoriPage from "@/page/EditKategoriPage.vue"
+import ListPersyaratanPage from "@/page/ListPersyaratanPage.vue"
+import ListArtikelPublishPage from "@/page/ListArtikelPublishPage.vue"
+import ListArtikelTolakPage from "@/page/ListArtikelTolakPage.vue"
+import TolakArtikelPage from "@/page/TolakArtikelPage.vue"
+import EditorMenungguReviewPage from "@/page/EditorMenungguReviewPage.vue"
+import BuatPersyaratanPage from "@/page/BuatPersyaratanPage.vue"
+import EditPersyaratanPage from "@/page/EditPersyaratanPage.vue"
 // import login from "@/page/login.vue"
 import axios from 'axios'
-import NotFoundPage from "@/page/PageNotFound.vue"
+// import NotFoundPage from "@/page/PageNotFound.vue"
 
 const routes = [
     // {
@@ -122,7 +134,7 @@ const routes = [
     },
 
 
-    // admin-ediitor
+    // admin-editor
     {
         name: 'BerandaEditor',
         path: '/admin/dashboard',
@@ -149,6 +161,26 @@ const routes = [
             next()
         }
     },
+    {
+        name: 'ListArtikelPublishPage',
+        path: '/admin/artikel/accept',
+        component: ListArtikelPublishPage,
+    },
+    {
+        name: 'ListArtikelTolakPage',
+        path: '/admin/artikel/deny',
+        component: ListArtikelTolakPage,
+    },
+    {
+        name: 'TolakArtikelPage',
+        path: '/admin/tolak/:id_artikel',
+        component: TolakArtikelPage,
+    },
+    {
+        name: 'EditorMenungguReviewPage',
+        path: '/admin/review',
+        component: EditorMenungguReviewPage,
+    },
 
 
     //admin
@@ -157,13 +189,45 @@ const routes = [
         path: '/admin/editor',
         component: ListEditorPage,
     },
-
-
-    //404 Page
     {
-        name: 'NotFoundPage',
-        path: '/NotFoundPage',
-        component: NotFoundPage,
+        name: 'AkunPenggunaPage',
+        path: '/admin/pengguna',
+        component: AkunPenggunaPage,
+    },
+    {
+        name: 'BuatAkunEditorPage',
+        path: '/admin/editor/create',
+        component: BuatAkunEditorPage,
+    },
+    {
+        name: 'ListKategoriPage',
+        path: '/admin/kategori',
+        component: ListKategoriPage,
+    },
+    {
+        name: 'BuatKategoriPage',
+        path: '/admin/kategori/create',
+        component: BuatKategoriPage,
+    },
+    {
+        name: 'EditKategoriPage',
+        path: '/admin/kategori/edit',
+        component: EditKategoriPage,
+    },
+    {
+        name: 'ListPersyaratanPage',
+        path: '/admin/persyaratan',
+        component: ListPersyaratanPage,
+    },
+    {
+        name: 'BuatPersyaratanPage',
+        path: '/admin/persyaratan/create',
+        component: BuatPersyaratanPage,
+    },
+    {
+        name: 'EditPersyaratanPage',
+        path: '/admin/persyaratan/edit',
+        component: EditPersyaratanPage,
     },
 ];
 
