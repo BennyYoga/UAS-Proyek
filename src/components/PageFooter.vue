@@ -68,7 +68,7 @@ ul {
 
 ul li {
     display: inline-block;
-    margin: 2rem;
+    margin: 1.5rem;
 }
 
 ul li a {

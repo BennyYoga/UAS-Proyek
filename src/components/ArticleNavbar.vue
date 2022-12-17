@@ -11,9 +11,9 @@
             <a class="nav-link" href="#">
                 <img class="nav-icon" src="../assets/profile.svg" alt="">
             </a>
-            <a class="nav-link" href="#">
+            <router-link to="/Studio/Artikel/Buat">
                 <img class="nav-icon" src="../assets/write.svg" alt="">
-            </a>
+            </router-link>
         </nav>
     </div>
 </template>

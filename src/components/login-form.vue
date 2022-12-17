@@ -56,16 +56,18 @@ export default {
                 axios
                     .post("http://localhost:4000/user/login", this.form, { withCredentials: true })
                     .then((response) => {
-                        console.log(response)
-                        console.log(response.data.token)
-                        localStorage.setItem('token-front', response.data.token)
-                        this.form.username = "";
-                        this.form.password = "";
+                        // console.log(response)
+                        // console.log(response.data.success)
+                        // if(response.data.token){
+                            this.form.username = "";
+                            this.form.password = "";
+                            localStorage.setItem('token-front', response.data.token)
+                            this.$router.push('/');
+                        // }   
                     })
             } catch (error) {
                 console.log(error);
             }
-            this.$router.push('/');
         },
         logout: function () {
             try {

@@ -24,8 +24,11 @@ import EditorMenungguReviewPage from "@/page/EditorMenungguReviewPage.vue"
 import BuatPersyaratanPage from "@/page/BuatPersyaratanPage.vue"
 import EditPersyaratanPage from "@/page/EditPersyaratanPage.vue"
 // import login from "@/page/login.vue"
+import NotFoundPage from "@/page/PageNotFound.vue"
+import Beranda from "@/page/ArticleListPage.vue"
+
 import axios from 'axios'
-// import NotFoundPage from "@/page/PageNotFound.vue"
+
 
 const routes = [
     // {
@@ -63,11 +66,14 @@ const routes = [
         name: 'LandingPage',
         path: '/',
         component: LandingPage,
+        meta: {
+            role: ""
+        }
     },
     {
         name: 'Beranda',
         path: '/Artikel',
-        // component: Beranda,
+        component: Beranda,
     },
     {
         name: 'IsiArtikel',
@@ -86,13 +92,9 @@ const routes = [
         name: 'ProfileKontributor',
         path: '/Profile',
         component: ProfileKontributor,
-        beforeEnter: (to, from, next) => {
-            if (localStorage.getItem('token-front') == null) {
-                return next({
-                    name: 'Login'
-                })
-            }
-            next()
+        meta: {
+            auth: true,
+            role: ['Kontributor', 'Pembaca']
         }
     },
     {
@@ -107,25 +109,40 @@ const routes = [
         name: 'BuatArtikel',
         path: '/Studio/Artikel/Buat',
         component: EditArtikel,
+        meta: {
+            auth: true,
+            role: ['Kontributor']
+        }
     },
     {
         name: 'EditArtikel',
         path: '/Studio/Artikel/edit/:id',
         component: EditArtikel,
-        props: true
+        props: true,
+        meta: {
+            auth: true,
+            role: ['Kontributor']
+        }
     },
     {
         name: 'PreviewArtikel',
         path: '/Studio/Artikel/Preview',
         component: PreviewArtikel,
+        meta: {
+            auth: true,
+            role: ['Kontributor']
+        }
     },
 
 
-
+    //Login And Register
     {
         name: 'Login',
         path: '/Login',
         component: Login,
+        meta: {
+            role: ""
+        }
     },
     {
         name: 'Register',
@@ -139,47 +156,67 @@ const routes = [
         name: 'BerandaEditor',
         path: '/admin/dashboard',
         component: BerandaEditor,
-        beforeEnter: (to, from, next) => {
-            if (localStorage.getItem('token-front') == null) {
-                return next({
-                    name: 'Login'
-                })
-            }
-            else {
-                let data = "";
-                axios
-                    .get("http://localhost:4000/user/payload/" + localStorage.getItem('token-front'))
-                    .then((response) => {
-                        data = response.data.role;
-                    })
-                if (data != 'Admin') {
-                    return next({
-                        name: 'NotFoundPage'
-                    })
-                }
-            }
-            next()
+        meta: {
+            auth: true,
+            role: ['Administrator']
         }
+        // beforeEnter: (to, from, next) => {
+        // if (localStorage.getItem('token-front') == null) {
+        //     return next({
+        //         name: 'Login'
+        //     })
+        // }
+        //     else {
+        // let data = "";
+        // axios
+        //     .get("http://localhost:4000/user/payload/" + localStorage.getItem('token-front'))
+        //     .then((response) => {
+        //         data = response.data.role;
+        //     })
+        // if (data != 'Admin') {
+        //     return next({
+        //         name: 'NotFoundPage'
+        //     })
+        // }
+        //     }
+        //     next()
+        // }
     },
     {
         name: 'ListArtikelPublishPage',
         path: '/admin/artikel/accept',
         component: ListArtikelPublishPage,
+        meta: {
+            auth: true,
+            role: ['Administrator']
+        }
     },
     {
         name: 'ListArtikelTolakPage',
         path: '/admin/artikel/deny',
         component: ListArtikelTolakPage,
+        meta: {
+            auth: true,
+            role: ['Administrator']
+        }
     },
     {
         name: 'TolakArtikelPage',
         path: '/admin/tolak/:id_artikel',
         component: TolakArtikelPage,
+        meta: {
+            auth: true,
+            role: ['Administrator']
+        }
     },
     {
         name: 'EditorMenungguReviewPage',
         path: '/admin/review',
         component: EditorMenungguReviewPage,
+        meta: {
+            auth: true,
+            role: ['Administrator']
+        }
     },
 
 
@@ -188,52 +225,141 @@ const routes = [
         name: 'ListEditorPage',
         path: '/admin/editor',
         component: ListEditorPage,
+        meta: {
+            auth: true,
+            role: ['Administrator']
+        }
     },
     {
         name: 'AkunPenggunaPage',
         path: '/admin/pengguna',
         component: AkunPenggunaPage,
+        meta: {
+            auth: true,
+            role: ['Administrator']
+        }
     },
     {
         name: 'BuatAkunEditorPage',
         path: '/admin/editor/create',
         component: BuatAkunEditorPage,
+        meta: {
+            auth: true,
+            role: ['Administrator']
+        }
     },
     {
         name: 'ListKategoriPage',
         path: '/admin/kategori',
         component: ListKategoriPage,
+        meta: {
+            auth: true,
+            role: ['Administrator']
+        }
     },
     {
         name: 'BuatKategoriPage',
         path: '/admin/kategori/create',
         component: BuatKategoriPage,
+        meta: {
+            auth: true,
+            role: ['Administrator']
+        }
     },
     {
         name: 'EditKategoriPage',
         path: '/admin/kategori/edit',
         component: EditKategoriPage,
+        meta: {
+            auth: true,
+            role: ['Administrator']
+        }
     },
     {
         name: 'ListPersyaratanPage',
         path: '/admin/persyaratan',
         component: ListPersyaratanPage,
+        meta: {
+            auth: true,
+            role: ['Administrator']
+        }
     },
     {
         name: 'BuatPersyaratanPage',
         path: '/admin/persyaratan/create',
         component: BuatPersyaratanPage,
+        meta: {
+            auth: true,
+            role: ['Administrator']
+        }
     },
     {
         name: 'EditPersyaratanPage',
         path: '/admin/persyaratan/edit',
         component: EditPersyaratanPage,
+        meta: {
+            auth: true,
+            role: ['Administrator']
+        }
     },
+
+    //Page Not Found
+    {
+        name: 'NotFoundPage',
+        path: '/NotFoundPage',
+        component: NotFoundPage,
+        meta: {
+            auth: false,
+            role: ""
+        }
+    },
+    { 
+        path: '/:pathMatch(.*)*',
+        component: NotFoundPage,
+        meta: {
+           role: ""
+       } 
+   },
 ];
 
 const router = createRouter({
     history: createWebHistory(),
     routes,
 });
+
+
+router.beforeEach((to, from, next) => {
+    if (to.meta.auth) {
+        if (localStorage.getItem('token-front') == null) {
+            return next({
+                name: 'Login'
+            })
+        }
+    }
+    next()
+})
+
+router.beforeEach((to, from, next) => {
+    let dataRole = "";
+    axios
+        .get("http://localhost:4000/user/payload/" + localStorage.getItem('token-front'))
+        .then((response) => {
+            dataRole = response.data.role;
+            if (to.meta.role === "" || dataRole === null) {
+                next()
+            }
+            else if (to.meta.role[0] === dataRole ||
+                to.meta.role[1] === dataRole ||
+                to.meta.role[2] === dataRole ||
+                to.meta.role[3] === dataRole) {
+                next()
+            } else {
+                next({
+                    name: 'NotFoundPage'
+                })
+            }
+        })
+})
+
 
 export default router
