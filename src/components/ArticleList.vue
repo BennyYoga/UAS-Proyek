@@ -22,17 +22,17 @@
 
 <script>
 import PublishedCard from './PublishedCard.vue'
-import DraftCard from './DraftCard.vue'
-import ArchivedCard from './ArchivedCard.vue'
-import SavedCard from './SavedCard.vue'
+// import DraftCard from './DraftCard.vue'
+// import ArchivedCard from './ArchivedCard.vue'
+// import SavedCard from './SavedCard.vue'
 
 export default {
     name: 'App',
     components: {
         PublishedCard,
-        DraftCard,
-        ArchivedCard,
-        SavedCard
+        // DraftCard,
+        // ArchivedCard,
+        // SavedCard
     }
 }
 </script>

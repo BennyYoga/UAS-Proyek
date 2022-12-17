@@ -25,7 +25,7 @@ import BuatPersyaratanPage from "@/page/BuatPersyaratanPage.vue"
 import EditPersyaratanPage from "@/page/EditPersyaratanPage.vue"
 // import login from "@/page/login.vue"
 import NotFoundPage from "@/page/PageNotFound.vue"
-import Beranda from "@/page/ArticleListPage.vue"
+import Beranda from "@/page/ArticleListPage-user.vue"
 
 import axios from 'axios'
 
@@ -74,6 +74,9 @@ const routes = [
         name: 'Beranda',
         path: '/Artikel',
         component: Beranda,
+        meta: {
+            role: ""
+        }
     },
     {
         name: 'IsiArtikel',
